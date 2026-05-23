@@ -12,7 +12,7 @@ Decision legend:
 |---|---|---|---|
 | `pyproject.toml` | `ADAPT` | `pyproject.toml` | Keep quality stack; prune PoC-only deps and align package paths. |
 | `tox.ini` | `ADAPT` | `tox.ini` | Update package/test paths for new module layout. |
-| `.gitlab-ci.yml` | `ADAPT` | `.gitlab-ci.yml` | Preserve stage structure; update image/app naming as needed. |
+| `.github/workflows/ci.yml` | `ADAPT` | `.github/workflows/ci.yml` | Preserve stage structure; update image/app naming as needed. |
 | `.pre-commit-config.yaml` | `KEEP_AS_IS` | `.pre-commit-config.yaml` | Hook baseline remains valid. |
 | `check_code.sh` | `ADAPT` | `check_code.sh` | Keep workflow; update import paths and package targets. |
 | `Dockerfile` | `ADAPT` | `Dockerfile` | Keep multi-stage/non-root pattern; update entrypoint module path. |

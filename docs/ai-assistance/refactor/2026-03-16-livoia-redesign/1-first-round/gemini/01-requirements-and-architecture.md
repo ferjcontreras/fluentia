@@ -35,7 +35,7 @@ Since the production application will be deployed via Kubernetes:
 - **Secret Management:** Hardcoded secrets or `.env` file dependencies will be completely removed. Credentials like Google and Orchestrator tokens will be injected dynamically via Kubernetes secrets as environment variables (`os.environ`). AWS credentials will be resolved automatically via the standard AWS credential pipeline (e.g., IAM Roles for Service Accounts in Kubernetes), meaning they don't need to be explicitly configured in the app unless overriding for local development.
 - **Dockerfile:** A multi-stage Docker build optimized for production (using `uv` to install production-only dependencies).
 
-### 2.3 CI/CD (`.gitlab-ci.yml`)
+### 2.3 CI/CD (`.github/workflows/ci.yml`)
 The CI pipeline will retain the following vital stages:
 - **Quality:** Linters (`ruff`), Typecheck (`mypy`).
 - **Tests:** Unit and Integration tests with coverage reports (`pytest`, `cobertura` format).

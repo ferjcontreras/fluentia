@@ -4,7 +4,7 @@ This target tree keeps migration practical, avoids unnecessary renaming churn, a
 
 ```text
 english-teacher-assistant/
-├── .gitlab-ci.yml
+├── .github/workflows/ci.yml
 ├── .pre-commit-config.yaml
 ├── Dockerfile
 ├── README.md

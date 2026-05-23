@@ -11,7 +11,7 @@ Decision legend:
 |---|---|---|---|
 | `pyproject.toml` | `EXPORT_ADAPT` | `pyproject.toml` | Keep quality/tooling stack; prune PoC-only deps and rename package. |
 | `tox.ini` | `EXPORT_ADAPT` | `tox.ini` | Keep env structure; update package paths and test markers if needed. |
-| `.gitlab-ci.yml` | `EXPORT_ADAPT` | `.gitlab-ci.yml` | Preserve CI stages/jobs with path and image naming updates. |
+| `.github/workflows/ci.yml` | `EXPORT_ADAPT` | `.github/workflows/ci.yml` | Preserve CI stages/jobs with path and image naming updates. |
 | `.pre-commit-config.yaml` | `EXPORT_AS_IS` | `.pre-commit-config.yaml` | Same hooks baseline is valid. |
 | `check_code.sh` | `EXPORT_ADAPT` | `check_code.sh` | Keep developer workflow; update package paths (`livoia_prod`). |
 | `Dockerfile` | `EXPORT_ADAPT` | `Dockerfile` | Keep container path, optimize for production multi-stage if possible. |

@@ -125,7 +125,7 @@ This document enables hierarchical exploration of the codebase. Start here, then
 - `tox.ini` - Test orchestration
 - `Dockerfile` - Multi-stage production build
 - `docker-compose.yml` - Local development
-- `.gitlab-ci.yml` - CI pipeline
+- `.github/workflows/ci.yml` - CI pipeline
 - `check_code.sh` - Local quality check script
 - `.pre-commit-config.yaml` - Git hooks
 

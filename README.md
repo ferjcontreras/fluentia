@@ -124,7 +124,7 @@ uv run pytest tests/unit/providers/test_google.py -v
 To use microphone access over non-HTTPS connections (e.g., remote servers):
 
 1. Open Chrome and navigate to `chrome://flags/#unsafely-treat-insecure-origin-as-secure`
-2. Add the server URL (e.g., `http://mltraining-services1.xcade.net:8000`)
+2. Add the server URL (e.g., `http://192.168.1.100:8000`)
 3. Set the flag to "Enabled"
 4. Restart the browser
 

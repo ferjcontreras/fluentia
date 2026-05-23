@@ -3,7 +3,7 @@
 ## Goals
 
 - Preserve current quality standards.
-- Keep GitLab CI integration compatible with organizational infrastructure.
+- Keep GitHub Actions integration compatible with organizational infrastructure.
 - Make Docker build/publish straightforward for release pipelines.
 
 ## Quality toolchain (keep)
@@ -34,7 +34,7 @@
    - Docker build on tags/releases
 4. `dependency-analysis` (manual or scheduled)
 
-## Adaptation from current `.gitlab-ci.yml`
+## Adaptation from current `.github/workflows/ci.yml`
 
 Keep:
 - `python:3.13-slim` base image convention

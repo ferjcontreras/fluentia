@@ -149,7 +149,7 @@ Manual trigger. Uses the internal dependency analysis tool.
 ```yaml
 dependency-analysis:
   stage: dependency-analysis
-  image: registry.xcade.net/python-dependency-analysis:latest
+  image: registry.
   script:
     - analyze
   when: manual

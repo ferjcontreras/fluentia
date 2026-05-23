@@ -94,7 +94,7 @@ livoia/
 │       └── test_websocket.py
 ├── .env.example
 ├── .gitignore
-├── .gitlab-ci.yml
+├── .github/workflows/ci.yml
 ├── .pre-commit-config.yaml
 ├── check_code.sh
 ├── Dockerfile

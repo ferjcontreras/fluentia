@@ -47,7 +47,7 @@ class AppSettings(BaseSettings):
 
 If an environment variable required by the configuration schema is missing or malformed, the application will crash immediately upon initialization, adhering to the "fail-fast" principle.
 
-## CI/CD Pipeline Architecture (`.gitlab-ci.yml`)
+## CI/CD Pipeline Architecture (`.github/workflows/ci.yml`)
 
 The pipeline enforces rigorous progression gates before any code merges or deploys to staging/production.
 

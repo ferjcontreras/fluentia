@@ -4,7 +4,7 @@ The new production repository should keep the current documentation shape, prese
 
 ```text
 english-teacher-assistant/
-├── .gitlab-ci.yml
+├── .github/workflows/ci.yml
 ├── .pre-commit-config.yaml
 ├── Dockerfile
 ├── README.md

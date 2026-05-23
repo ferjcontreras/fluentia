@@ -15,7 +15,7 @@ This document describes the step-by-step process to create the new production re
    - `pyproject.toml` (as designed in [06-ci-cd.md](06-ci-cd.md))
    - `tox.ini`
    - `.pre-commit-config.yaml`
-   - `.gitlab-ci.yml`
+   - `.github/workflows/ci.yml`
    - `.gitignore`
    - `.env.example`
    - `check_code.sh`
@@ -309,7 +309,7 @@ async def handle_session(self, websocket: WebSocket, ..., params: dict[str, Any]
 - [ ] No unused code (every module reachable from `app.py`)
 - [ ] No unused dependencies in `pyproject.toml`
 - [ ] All documentation links work
-- [ ] GitLab CI pipeline passes
+- [ ] GitHub Actions pipeline passes
 
 ## Migration Timeline Summary
 

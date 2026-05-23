@@ -4,7 +4,7 @@ The new repository should preserve documentation conventions while organizing ru
 
 ```text
 english-teacher-assistant/
-├── .gitlab-ci.yml
+├── .github/workflows/ci.yml
 ├── .pre-commit-config.yaml
 ├── Dockerfile
 ├── README.md

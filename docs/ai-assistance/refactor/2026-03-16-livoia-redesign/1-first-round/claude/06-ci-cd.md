@@ -247,7 +247,7 @@ Same as PoC, with updated paths:
 # pylint: src/livoia
 ```
 
-## .gitlab-ci.yml
+## .github/workflows/ci.yml
 
 ```yaml
 image: python:3.13-slim
@@ -318,7 +318,7 @@ dependency-analysis-job:
   variables:
     DEFAULT_EXPANDED: false
     DEPENDENCIES: build-essential
-  image: registry.xcade.net/python-dependency-analysis:latest
+  image: registry.
   before_script: []
   script:
     - run
@@ -336,7 +336,7 @@ build-image:
     - echo "Assuming ECR role"
     - STS=($(aws sts assume-role
         --role-arn arn:aws:iam::381491985459:role/AvatureJenkinsECR
-        --role-session-name gitlab-ci-docker-pipeline
+        --role-session-name github-actions-docker-pipeline
         --duration-seconds 900
         --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]'
         --output text))

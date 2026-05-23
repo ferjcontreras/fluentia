@@ -463,7 +463,7 @@ Classify every file in the current repo:
 
 | Phase | Content | Parallel? | Validation |
 |-------|---------|-----------|------------|
-| **0** | Repository scaffold: `pyproject.toml`, `tox.ini`, `.gitlab-ci.yml`, `.pre-commit-config.yaml`, empty package structure | No | `uv sync && uv run tox` passes with 0 tests |
+| **0** | Repository scaffold: `pyproject.toml`, `tox.ini`, `.github/workflows/ci.yml`, `.pre-commit-config.yaml`, empty package structure | No | `uv sync && uv run tox` passes with 0 tests |
 | **1** | Configuration: `config.py`, observability, health endpoints | No | Health endpoint responds, structured logs emit |
 | **2a** | Tool framework: `tools/base.py`, `tools/processor.py`, `tools/state.py` | Yes (parallel with 2b, 2c) | Unit tests pass |
 | **2b** | Prompt management: `prompts/renderer.py`, templates | Yes | Unit tests pass |
@@ -472,7 +472,7 @@ Classify every file in the current repo:
 | **3b** | Google provider: port from `livoia_google` + `livoia_web` | Yes | Integration test with real Google |
 | **4** | Application factory: `app.py`, WebSocket endpoint, static file serving | No (depends on 3a, 3b) | Full e2e: browser connects, voice works |
 | **5** | Frontend: port static assets, update WebSocket URL | No (depends on 4) | Manual browser test |
-| **6** | Docker, CI/CD: Dockerfile, `.gitlab-ci.yml`, deployment scripts | No | `docker build` succeeds, pipeline green |
+| **6** | Docker, CI/CD: Dockerfile, `.github/workflows/ci.yml`, deployment scripts | No | `docker build` succeeds, pipeline green |
 | **7** | Documentation: guides, references, README with Mermaid diagram | No | Human review |
 
 ### Validation Checklist (from GPT)

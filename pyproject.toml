@@ -52,10 +52,10 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://gitlab.xcade.net/fernando.contreras/english-teacher-assistant"
-Documentation = "https://gitlab.xcade.net/fernando.contreras/english-teacher-assistant/docs"
-Repository = "https://gitlab.xcade.net/fernando.contreras/english-teacher-assistant"
-Issues = "https://gitlab.xcade.net/fernando.contreras/english-teacher-assistant/issues"
+Homepage = "https://github.com/ferjcontreras/fluentia"
+Documentation = "https://github.com/ferjcontreras/fluentia"
+Repository = "https://github.com/ferjcontreras/fluentia"
+Issues = "https://github.com/ferjcontreras/fluentia"
 
 [tool.hatch.metadata]
 allow-direct-references = true

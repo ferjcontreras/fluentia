@@ -1,14 +1,8 @@
 ---
-gitlab:
+github:
   branch_naming_policy:
-    regex: ['^T[0-9]+[A-Z][a-zA-Z0-9]*']
-  merge_request:
+    regex: ['^[a-z0-9]+([/-][a-z0-9]+)*$']
+  pull_request:
     enabled: true
     create_as_draft: true
-    branch_regex: [ '.+' ]
     trigger: 'new-branch'
-    templates:
-      description: |
-        {% if teg_case_id %}
-        TEG case: {{ teg_case_url }}
-        {% endif %}

@@ -12,7 +12,7 @@ Decision legend:
 |---|---|---|---|
 | `pyproject.toml` | `EXPORT_ADAPT` | `pyproject.toml` | Keep quality stack; remove PoC-only dependencies and align package paths. |
 | `tox.ini` | `EXPORT_ADAPT` | `tox.ini` | Keep environment structure; align package/test targets. |
-| `.gitlab-ci.yml` | `EXPORT_ADAPT` | `.gitlab-ci.yml` | Preserve CI stage model with project path/image updates. |
+| `.github/workflows/ci.yml` | `EXPORT_ADAPT` | `.github/workflows/ci.yml` | Preserve CI stage model with project path/image updates. |
 | `.pre-commit-config.yaml` | `EXPORT_AS_IS` | `.pre-commit-config.yaml` | Baseline hook set remains valid. |
 | `check_code.sh` | `EXPORT_ADAPT` | `check_code.sh` | Keep workflow and update package paths. |
 | `Dockerfile` | `EXPORT_ADAPT` | `Dockerfile` | Keep multi-stage/non-root approach, update runtime entrypoint. |

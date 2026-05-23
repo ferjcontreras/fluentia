@@ -2,7 +2,7 @@
 
 ## Overview
 
-Project tooling, dependency management, code quality enforcement, CI/CD pipeline, and containerization. Uses `uv` for packages, `ruff` + `mypy` + `pylint` for code quality, `tox` for test orchestration, GitLab CI for automation, and Docker for deployment.
+Project tooling, dependency management, code quality enforcement, CI/CD pipeline, and containerization. Uses `uv` for packages, `ruff` + `mypy` + `pylint` for code quality, `tox` for test orchestration, GitHub Actions for automation, and Docker for deployment.
 
 ---
 
@@ -13,7 +13,7 @@ Project tooling, dependency management, code quality enforcement, CI/CD pipeline
 - **Config**: `pyproject.toml` (root, ~284 lines)
   - Core dependencies: 48 packages (AI/ML, web framework, observability, data)
   - Dev dependencies: 16 packages (testing, linting, type checking)
-  - Private PyPI index: `http://mltraining-services1.xcade.net:8080/simple/` (Avature internal)
+  - No private PyPI index (public packages only)
 - **Lock file**: `uv.lock`
 - **Commands**: `uv sync`, `uv sync --group dev`, `uv run <command>`
 
@@ -82,21 +82,20 @@ Coverage reports: terminal (missing lines), XML (CI), HTML (`coverage/html/`)
 
 ---
 
-## GitLab CI Pipeline
+## GitHub Actions CI Pipeline
 
 **When to look here**: CI failures, pipeline configuration, build process, or deployment setup.
 
-**File**: `.gitlab-ci.yml`
+**File**: `.github/workflows/ci.yml`
 
 | Stage | Job | Trigger | What it does |
 |-------|-----|---------|-------------|
 | quality | `lint` | .py or config changes | `tox -e lint` |
 | quality | `typecheck` | .py or config changes | `tox -e typecheck` |
-| tests | `tests` | .py or config changes | `tox` (all checks + tests), produces Cobertura coverage |
-| dependency-analysis | manual | On-demand | Runs audit.json and outdated.json |
-| build | docker build | Git tags only | Builds and pushes to ECR |
+| tests | `tests` | .py or config changes | `tox` (all checks + tests), produces coverage |
+| build | docker build | Git tags only | Builds and pushes image |
 
-**ECR**: Not configured (local development only)
+**Note**: CI pipeline not yet configured (local development only)
 
 ---
 

@@ -32,9 +32,9 @@ The current PoC relies on `.env` files or direct exports. The new app must use `
 - `ORCHESTRATOR_API_URL`, `ORCHESTRATOR_AUTH_TOKEN` (For future tool routing).
 - `LOG_LEVEL` (Default `INFO`, settable to `DEBUG`).
 
-## 2. CI/CD Pipeline (`.gitlab-ci.yml`)
+## 2. CI/CD Pipeline (`.github/workflows/ci.yml`)
 
-The existing GitLab CI configuration is strong and already uses `uv` and AWS ECR integrations. The new `.gitlab-ci.yml` will be an evolution of the current file.
+The existing GitHub Actions configuration is strong and already uses `uv` and AWS ECR integrations. The new `.github/workflows/ci.yml` will be an evolution of the current file.
 
 ### 2.1 Pipeline Stages
 The pipeline will execute the following stages in order:
@@ -50,7 +50,7 @@ The pipeline will execute the following stages in order:
    - Generates coverage reports (`coverage/coverage.xml`) used by GitLab's native coverage visualization.
 
 3. **`dependency-analysis`**:
-   - Uses the custom `registry.xcade.net/python-dependency-analysis:latest` image.
+   - Uses the custom `registry. image.
    - Requires `manual` trigger (as in the PoC).
 
 4. **`build`**:

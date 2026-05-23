@@ -26,7 +26,7 @@ Before writing any code, classify every file in the current PoC into one of thre
 |--------|-------------|---------|
 | `pyproject.toml` | `pyproject.toml` | New package name, reduced dependencies, updated config |
 | `tox.ini` | `tox.ini` | Updated paths (`src/livoia`) |
-| `.gitlab-ci.yml` | `.gitlab-ci.yml` | Updated image name, removed portaudio |
+| `.github/workflows/ci.yml` | `.github/workflows/ci.yml` | Updated image name, removed portaudio |
 | `Dockerfile` | `Dockerfile` | Simplified, single worker, no portaudio |
 | `src/livoia_web/app.py` | `src/livoia/app.py` + `src/livoia/session/manager.py` | Split: factory in app.py, session logic in manager.py |
 | `src/livoia_web/prompts.py` | `src/livoia/agents/interviewer.py` + `agents/templates/interviewer.j2` | Refactor: extract template, create AgentDefinition |
@@ -73,7 +73,7 @@ Before writing any code, classify every file in the current PoC into one of thre
 2. Set up `pyproject.toml` with dependencies, tool configs (ruff, mypy, pylint)
 3. Set up `tox.ini` with `py313`, `lint`, `typecheck` environments
 4. Set up `.pre-commit-config.yaml` with all hooks
-5. Set up `.gitlab-ci.yml` with all stages
+5. Set up `.github/workflows/ci.yml` with all stages
 6. Create `src/livoia/__init__.py` (empty package)
 7. Create `tests/` directory with `conftest.py`
 
@@ -223,7 +223,7 @@ Before writing any code, classify every file in the current PoC into one of thre
 1. Create `Dockerfile` (multi-stage, non-root, single worker)
 2. Create `docker-compose.yml` for local development
 3. Create `.dockerignore`
-4. Update `.gitlab-ci.yml` build stage with new image name
+4. Update `.github/workflows/ci.yml` build stage with new image name
 5. Test: build image, run container, connect browser, voice conversation works
 
 **Validation**: `docker build -t livoia .` succeeds. Container starts and serves voice sessions.
@@ -262,7 +262,7 @@ After all phases are complete:
 - [ ] `/ready` endpoint reports provider availability
 - [ ] Structured JSON logs emit with session correlation IDs
 - [ ] Config summary logs at startup with secrets redacted
-- [ ] GitLab CI pipeline runs quality, tests, and build stages
+- [ ] GitHub Actions pipeline runs quality, tests, and build stages
 - [ ] No PoC-only dependencies remain (langchain, openai, numpy, redis, pyaudio)
 - [ ] All `DO_NOT_EXPORT` files confirmed absent
 - [ ] Pre-commit hooks pass (ruff, commitizen, file hygiene)
