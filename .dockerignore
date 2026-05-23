@@ -1,0 +1,93 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+tests/
+test_*.py
+*_test.py
+.tox/
+.nox/
+
+# Documentation
+docs/
+*.md
+!README.md
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# Docker
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Kubernetes
+deployment/
+k8s/
+
+# Development
+scripts/
+notebooks/
+*.ipynb
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+
+# Cache and temporary files
+*.cache
+tmp/
+temp/
+cache/
+
+# OS
+Thumbs.db
+Desktop.ini
+
+# Project specific
+*.bak
+*.tmp
+*.temp
+scratch/

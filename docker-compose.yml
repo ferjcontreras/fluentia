@@ -1,0 +1,15 @@
+services:
+  fluentia:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - FLUENTIA_LOG_LEVEL=DEBUG
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - BEDROCK_REGION=us-east-1
+      # AWS credentials (used by the Bedrock SDK's EnvironmentCredentialsResolver)
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN}
+    volumes:
+      - ./src:/app/src  # Hot reload (development only)

@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FluentAI</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/app.js" type="module"></script>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-logo-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <path d="M32 8L4 22l28 14 28-14L32 8z" fill="#FDBA74" stroke="#EA580C" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M16 29v14c0 4.418 7.163 8 16 8s16-3.582 16-8V29" stroke="#FDBA74" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M52 22v12" stroke="#FB923C" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="52" cy="36" r="2.5" fill="#FB923C"/>
+          <path d="M23 34l5 3 5-3" stroke="#EA580C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="header-divider"></div>
+      <div class="header-info">
+        <h1>FluentAI</h1>
+        <div class="subtitle">Your AI-powered English coach</div>
+      </div>
+<div class="connection-status">
+        <span class="status-indicator" id="statusIndicator"></span>
+        <span id="statusText">Connecting...</span>
+      </div>
+    </header>
+
+    <nav class="tab-bar">
+      <button class="tab-button active" data-tab="conversation">Conversation</button>
+      <button class="tab-button" data-tab="settings">Settings</button>
+    </nav>
+
+    <div class="tab-content active" id="tab-conversation">
+      <div class="conversation-toolbar">
+        <button class="toolbar-toggle" id="toggleConsole" title="Show event console">
+          <span class="toolbar-icon">&#x2699;</span>
+          <span class="toolbar-label">Console</span>
+        </button>
+        <button class="toolbar-toggle" id="toggleSubtitles" title="Show subtitles">
+          <span class="toolbar-icon">&#x1F4AC;</span>
+          <span class="toolbar-label">Subtitles</span>
+        </button>
+      </div>
+
+      <div class="main-layout">
+        <div class="conversation-center">
+          <div class="state-indicator idle" id="stateIndicator">
+            <div class="indicator-ripple ripple-1"></div>
+            <div class="indicator-ripple ripple-2"></div>
+            <div class="indicator-ripple ripple-3"></div>
+            <svg class="teacher-avatar" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <clipPath id="avatarCircleClip">
+                  <circle cx="100" cy="100" r="99"/>
+                </clipPath>
+                <radialGradient id="faceShade" cx="45%" cy="38%" r="65%">
+                  <stop offset="0%" stop-color="#F8D0A0"/>
+                  <stop offset="100%" stop-color="#E8A870"/>
+                </radialGradient>
+              </defs>
+              <!-- Background circle (dark maroon) -->
+              <circle cx="100" cy="100" r="100" fill="#4A0E20"/>
+              <g clip-path="url(#avatarCircleClip)">
+                <!-- Shirt / body -->
+                <path d="M 0 200 L 0 166 Q 16 148 50 142 Q 73 137 100 136 Q 127 137 150 142 Q 184 148 200 166 L 200 200 Z" fill="#7A1828"/>
+                <path d="M 83 140 L 100 162 L 117 140 Q 100 149 83 140 Z" fill="#B02535"/>
+                <!-- Hair back layer -->
+                <path d="M 58 44 Q 28 70 22 118 Q 18 155 30 185 Q 42 200 62 200 L 40 200 Q 14 178 18 138 Q 20 92 48 64 Z" fill="#36080C"/>
+                <path d="M 142 44 Q 172 70 178 118 Q 182 155 170 185 Q 158 200 138 200 L 160 200 Q 186 178 182 138 Q 180 92 152 64 Z" fill="#36080C"/>
+                <!-- Neck -->
+                <path d="M 87 129 Q 100 136 113 129 L 114 148 Q 100 153 86 148 Z" fill="#E8A870"/>
+                <!-- Face -->
+                <ellipse cx="100" cy="86" rx="48" ry="52" fill="url(#faceShade)"/>
+                <!-- Hair main sides (in front of face edges) -->
+                <path d="M 55 42 Q 34 65 30 108 Q 26 148 34 178 Q 44 200 62 200 L 48 200 Q 26 174 28 142 Q 26 100 44 70 Q 52 52 58 44 Z" fill="#3D0C10"/>
+                <path d="M 145 42 Q 166 65 170 108 Q 174 148 166 178 Q 156 200 138 200 L 152 200 Q 174 174 172 142 Q 174 100 156 70 Q 148 52 142 44 Z" fill="#3D0C10"/>
+                <!-- Hair top -->
+                <path d="M 57 50 Q 76 34 100 32 Q 124 34 143 50 Q 126 42 100 40 Q 74 42 57 50 Z" fill="#3D0C10"/>
+                <!-- Hair highlight streak (reddish-brown) -->
+                <path d="M 115 33 Q 132 42 138 58 Q 126 44 114 37 Z" fill="#7B3018" opacity="0.9"/>
+                <path d="M 106 32 Q 118 34 126 42 Q 114 35 106 34 Z" fill="#8B4022" opacity="0.75"/>
+                <!-- Left ear -->
+                <ellipse cx="53" cy="90" rx="6" ry="9" fill="#E8A870"/>
+                <ellipse cx="53" cy="90" rx="3.5" ry="5.5" fill="#D49060"/>
+                <!-- Left earring -->
+                <circle cx="53" cy="100" r="7" fill="#D8B020"/>
+                <circle cx="53" cy="100" r="5" fill="#F0C828"/>
+                <circle cx="51" cy="98" r="1.8" fill="#FADA70" opacity="0.8"/>
+                <!-- Right ear -->
+                <ellipse cx="147" cy="90" rx="6" ry="9" fill="#E8A870"/>
+                <ellipse cx="147" cy="90" rx="3.5" ry="5.5" fill="#D49060"/>
+                <!-- Right earring -->
+                <circle cx="147" cy="100" r="7" fill="#D8B020"/>
+                <circle cx="147" cy="100" r="5" fill="#F0C828"/>
+                <circle cx="145" cy="98" r="1.8" fill="#FADA70" opacity="0.8"/>
+                <!-- Eyebrows (thick, arched) -->
+                <path d="M 69 73 Q 79 67 92 71" stroke="#280808" stroke-width="4" fill="none" stroke-linecap="round"/>
+                <path d="M 108 71 Q 121 67 131 73" stroke="#280808" stroke-width="4" fill="none" stroke-linecap="round"/>
+                <!-- Eyelashes -->
+                <path d="M 67 79 Q 80 72 93 78" stroke="#280808" stroke-width="2" fill="none" opacity="0.9"/>
+                <path d="M 107 78 Q 120 72 133 79" stroke="#280808" stroke-width="2" fill="none" opacity="0.9"/>
+                <!-- Eye whites -->
+                <ellipse cx="80" cy="84" rx="12.5" ry="10" fill="white"/>
+                <ellipse cx="120" cy="84" rx="12.5" ry="10" fill="white"/>
+                <!-- Iris -->
+                <circle cx="80" cy="85" r="7.5" fill="#6B2820"/>
+                <circle cx="120" cy="85" r="7.5" fill="#6B2820"/>
+                <!-- Pupils -->
+                <circle class="pupil-l" cx="80" cy="85" r="4.5" fill="#120404"/>
+                <circle class="pupil-r" cx="120" cy="85" r="4.5" fill="#120404"/>
+                <!-- Eye shine -->
+                <circle cx="82" cy="82" r="2.2" fill="white" opacity="0.9"/>
+                <circle cx="122" cy="82" r="2.2" fill="white" opacity="0.9"/>
+                <!-- Eyelids (blink animation) -->
+                <ellipse class="eyelid-l" cx="80" cy="84" rx="13.5" ry="11" fill="#F0C090"/>
+                <ellipse class="eyelid-r" cx="120" cy="84" rx="13.5" ry="11" fill="#F0C090"/>
+                <!-- Nose -->
+                <path d="M 96 94 Q 93 104 96 108 Q 100 110 104 108 Q 107 104 104 94" stroke="#C48860" stroke-width="1.5" fill="none" opacity="0.55" stroke-linecap="round"/>
+                <ellipse cx="100" cy="108" rx="4" ry="2.5" fill="#D49060" opacity="0.3"/>
+                <!-- Cheek blush -->
+                <ellipse cx="66" cy="97" rx="12" ry="7" fill="#F09070" opacity="0.2"/>
+                <ellipse cx="134" cy="97" rx="12" ry="7" fill="#F09070" opacity="0.2"/>
+                <!-- Mouth closed (smile, default) -->
+                <path class="mouth-closed" d="M 85 114 Q 100 124 115 114" stroke="#C05870" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path class="mouth-closed" d="M 87 117 Q 100 122 113 117" stroke="#C87080" stroke-width="1" fill="none" opacity="0.45"/>
+                <!-- Mouth open (speaking) -->
+                <g class="mouth-open">
+                  <ellipse cx="100" cy="118" rx="14" ry="8" fill="#8B2C40"/>
+                  <rect x="89" y="112" width="22" height="8" rx="3.5" fill="#EEE8E5"/>
+                  <path d="M 86 112 Q 100 114 114 112" stroke="#C05870" stroke-width="2" fill="none"/>
+                  <path d="M 87 120 Q 100 123 113 120" stroke="#C05870" stroke-width="1.5" fill="none"/>
+                </g>
+              </g>
+              <!-- Circle border -->
+              <circle cx="100" cy="100" r="99" fill="none" stroke="#380818" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="state-label" id="stateLabel"></div>
+          <div class="subtitle-bar hidden" id="subtitleBar">
+            <span class="subtitle-text" id="subtitleText"></span>
+          </div>
+
+          <div class="tool-notification hidden" id="toolNotification">
+            <span class="tool-notification-spinner"></span>
+            <span class="tool-notification-text" id="toolNotificationText"></span>
+          </div>
+
+          <div class="input-container">
+            <form id="messageForm">
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  id="message"
+                  name="message"
+                  placeholder="Type your message here..."
+                  autocomplete="off"
+                />
+                <button type="submit" id="sendButton" disabled>Send</button>
+                <button type="button" id="startAudioButton">Start Conversation</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="console-panel hidden" id="consolePanel">
+          <div class="console-header">
+            <h2>Event Console</h2>
+            <div class="console-controls">
+              <label class="console-checkbox">
+                <input type="checkbox" id="showAudioEvents">
+                <span>Show audio</span>
+              </label>
+              <button id="clearConsole" class="console-clear-btn">Clear</button>
+              <button class="panel-close" id="closeConsole">&times;</button>
+            </div>
+          </div>
+          <div id="consoleContent" class="console-content"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-settings">
+      <div class="settings-panel">
+        <div class="settings-columns">
+          <div class="settings-column-left">
+            <div class="settings-section">
+              <h2 class="settings-section-title">Agent</h2>
+              <div class="agent-selector">
+                <select id="agentSelect"></select>
+              </div>
+              <p class="agent-description" id="agentDescription"></p>
+            </div>
+
+            <div class="settings-section">
+              <h2 class="settings-section-title">Configuration</h2>
+              <div id="agentFields"></div>
+            </div>
+
+            <p class="settings-hint">Changes apply when starting a new conversation.</p>
+          </div>
+
+          <div class="settings-column-right">
+            <div class="prompt-preview" id="promptPreview">
+              <div class="prompt-preview-header">
+                <h3>Prompt Preview</h3>
+              </div>
+              <div class="prompt-preview-content">
+                <pre id="promptPreviewContent"></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

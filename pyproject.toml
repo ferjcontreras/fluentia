@@ -1,0 +1,254 @@
+[build-system]
+requires = [
+    "hatchling>=1.27.0"
+]
+build-backend = "hatchling.build"
+
+[project]
+name = "fluentia"
+version = "0.1.0"
+description = "Fluentia - Real-time bidirectional voice agent platform"
+authors = [
+    { name = "Fernando", email = "ferjcontreras@gmail.com" }
+]
+keywords = ["AI", "ML", "voice", "agent"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    # NOTE: Keep this list sorted alphabetically
+    "aiobotocore>=2.18.4",
+    "aws-sdk-bedrock-runtime>=0.1.0,<0.2.0",
+    "fastapi>=0.115.0",
+    "google-adk>=1.20.0",
+    "jinja2>=3.1.5",
+    "pydantic>=2.10.6",
+    "pydantic-settings>=2.7.1",
+    "smithy-aws-core>=0.0.1",
+    "structlog>=24.4.0",
+    "uvicorn[standard]>=0.35.0",
+    # NOTE: Keep this list sorted alphabetically
+]
+
+[dependency-groups]
+# https://docs.astral.sh/uv/concepts/projects/dependencies/#development-dependencies
+dev = [
+    # NOTE: Keep this list sorted alphabetically
+    "commitizen>=4.1.0",
+    "mypy>=1.15.0",
+    "pre-commit>=4.0.0",
+    "pylint>=3.3.4",
+    "pytest>=8.3.4",
+    "pytest-asyncio>=1.1.0",
+    "pytest-cov>=6.0.0",
+    "pytest-mock>=3.14.0",
+    "ruff>=0.9.5",
+    "tox>=4.24.1",
+    "tox-uv>=1.25.0",
+    # NOTE: Keep this list sorted alphabetically
+]
+
+[project.urls]
+Homepage = "https://gitlab.xcade.net/fernando.contreras/english-teacher-assistant"
+Documentation = "https://gitlab.xcade.net/fernando.contreras/english-teacher-assistant/docs"
+Repository = "https://gitlab.xcade.net/fernando.contreras/english-teacher-assistant"
+Issues = "https://gitlab.xcade.net/fernando.contreras/english-teacher-assistant/issues"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/fluentia"]
+
+[tool.hatch.build.targets.sdist]
+packages = ["src/fluentia"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle (error)
+    "W",   # pycodestyle (warning)
+    "F",   # pyflakes
+    "I",   # isort
+    "N",   # pep8-naming
+    "UP",  # pyupgrade
+    "D",   # pydocstyle
+    "S",   # bandit
+    "B",   # bugbear
+    "T20", # flake8-print
+    "ARG", # flake8-unused-arguments
+    "RUF", # Ruff-specific rules
+]
+extend-select = ["E501", "ASYNC", "RUF006", "I"]
+exclude = ["notebooks/**/*", "scripts/**/*"]
+fixable = ["ALL"]
+unfixable = []
+
+[tool.ruff.lint.per-file-ignores]
+"src/fluentia/app.py" = ["ARG001"]  # Unused app parameter in lifespan function (required by FastAPI)
+"tests/**/*.py" = [
+    "S101",
+    "ARG",
+    "FBT",
+    "S311",
+    "D",
+    "S104",  # Binding to all interfaces (test configs)
+    "S105",  # Possible hardcoded password (test data)
+    "S106"   # Hardcoded passwords (test data)
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.isort]
+split-on-trailing-comma = false
+force-single-line = true
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = true
+line-ending = "auto"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+markers = [
+    "manual: marks tests that should only be run manually",
+    "real_env: marks tests that should use real environment variables",
+    "integration: marks tests as integration tests",
+    "e2e: marks tests as end-to-end tests",
+    "performance: marks tests as performance tests"
+]
+testpaths = ["tests"]
+addopts = "-m 'not manual and not integration and not e2e and not performance'"
+
+[tool.mypy]
+allow_untyped_defs = true
+allow_untyped_calls = true
+disable_error_code = "annotation-unchecked"
+ignore_missing_imports = true
+plugins = ['pydantic.mypy']
+python_version = "3.13"
+show_error_codes = true
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+warn_unused_ignores = true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disable_error_code = [
+    "no-untyped-def",
+    "no-untyped-call",
+    "misc",
+    "arg-type",
+    "var-annotated",
+    "union-attr",
+    "index",
+    "assignment",
+    "return-value",
+    "attr-defined"
+]
+check_untyped_defs = false
+disallow_incomplete_defs = false
+no_implicit_optional = false
+warn_return_any = false
+warn_unused_ignores = false
+
+[tool.coverage.run]
+data_file = "coverage/.coverage"
+source = ["src/fluentia"]
+omit = [
+    "*/tests/*",
+    "*/venv/*",
+    "*/__pycache__/*",
+    "*/migrations/*",
+    "*/conftest.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "class .*\\(Protocol\\):",
+    "@(abc\\.)?abstractmethod",
+]
+show_missing = true
+skip_covered = false
+precision = 2
+fail_under = 10
+
+[tool.coverage.html]
+directory = "coverage/html"
+
+[tool.coverage.xml]
+output = "coverage/coverage.xml"
+
+[tool.coverage.json]
+output = "coverage/coverage.json"
+
+[tool.pylint.main]
+fail-under = 9.9
+jobs = 0
+py-version = "3.13"
+
+[tool.pylint.basic]
+good-names = [
+    "i",
+    "j",
+    "k",
+    "ex",
+    "Run",
+    "db",
+    "_",
+]
+
+[tool.pylint.design]
+max-locals = 16
+
+[tool.pylint.format]
+max-line-length = 100
+
+[tool.pylint.miscellaneous]
+notes = [
+    "FIXME",
+    "TODO",
+]
+
+[tool.pylint."messages control"]
+disable = [
+    "C0111",
+    "W0703",
+    "unsubscriptable-object",
+    "W0511",
+    "W1203",
+    "raw-checker-failed",
+    "bad-inline-option",
+    "locally-disabled",
+    "file-ignored",
+    "suppressed-message",
+    "useless-suppression",
+    "deprecated-pragma",
+    "use-symbolic-message-instead",
+    "too-few-public-methods",
+]
+max-attributes = 10
+
+[tool.commitizen]
+# https://commitizen-tools.github.io/commitizen/config/
+bump_message = "bump: v$current_version → v$new_version"
+breaking_change_exclamation_in_title = true
+tag_format = "v$version"
+update_changelog_on_bump = true
+version_provider = "uv"
+

@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(uv run *)",
+      "Bash(./check_code.sh)",
+      "Bash(uv sync *)",
+      "Bash(curl -s http://localhost:8000/api/agents)",
+      "Bash(python3 -c \"import sys,json; agents=json.load\\(sys.stdin\\); print\\([a['name'] for a in agents]\\)\")",
+      "Bash(fuser -k 8000/tcp)",
+      "WebFetch(domain:lottiefiles.com)",
+      "Bash(curl -sL \"https://raw.githubusercontent.com/airbnb/lottie-web/master/demo/simple/lottie.json\")"
+    ]
+  }
+}
