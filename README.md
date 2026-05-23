@@ -1,13 +1,12 @@
-# Fluentia - Voice Agent Platform
+# FluentAI — English Coach
 
-**Fluentia** stands for **LI**ve **VO**ice **N**atural Language **I**nterface **A**gent. It is a real-time bidirectional voice agent platform that supports multiple AI providers. Fluentia provides a web-based interface for conducting voice conversations with configurable agents, prompt templates, and tool integration.
+**Fluentia** is a real-time bidirectional voice platform powering FluentAI, an AI-powered English practice assistant. It provides a web-based interface for voice conversations with a virtual teacher that corrects errors, adapts to your CEFR level, and keeps the session engaging.
 
-## Supported Providers
+## Supported Provider
 
-| Provider | Model | Description |
-|----------|-------|-------------|
-| **Google Gemini** | Gemini 2.5 Flash (native audio) | Google ADK with optional proactivity and affective dialog |
-| **AWS Bedrock** | Amazon Nova Sonic | HTTP/2 bidirectional streaming with tool execution |
+| Provider | Model |
+|----------|-------|
+| **Google Gemini** | Gemini 2.5 Flash (native audio) |
 
 ## Architecture
 
@@ -45,8 +44,8 @@ Key design decisions:
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Clone the repository
-git clone git@gitlab.xcade.net:fernando.contreras/english-teacher-assistant.git
-cd english-teacher-assistant
+git clone git@github.com:ferjcontreras/fluentia.git
+cd fluentia
 
 # Install dependencies
 uv sync --group dev
@@ -57,16 +56,10 @@ uv run pre-commit install
 
 ### Running
 
-Set credentials for your provider:
+Set your Google API key:
 
 ```bash
-# Google Gemini
 export GOOGLE_API_KEY="your-api-key"
-
-# AWS Bedrock
-export AWS_ACCESS_KEY_ID="..."
-export AWS_SECRET_ACCESS_KEY="..."
-export AWS_SESSION_TOKEN="..."
 ```
 
 Start the server:
@@ -150,7 +143,7 @@ This is not needed for `localhost`.
 ### Reference
 
 - [WebSocket Protocol](docs/reference/websocket-protocol.md) - Event types, message format, session lifecycle
-- [Provider Architecture](docs/reference/provider-architecture.md) - Provider abstraction, Google and Bedrock details
+- [Provider Architecture](docs/reference/provider-architecture.md) - Provider abstraction and Google implementation details
 - [Agent and Tool Framework](docs/reference/agent-and-tools.md) - Agent definitions, tool interface, creating new agents/tools
 
 ### Guides
